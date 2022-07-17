@@ -16,7 +16,8 @@ def main():
     )
 
 
-    subreddit = reddit.subreddit("Haligtree")
+    sub=os.environ.get('my_subreddit')
+    subreddit = reddit.subreddit(sub)
     for submission in subreddit.stream.submissions(skip_existing=True):
         user = submission.author
         user_submissions = get_total_submissions(reddit, submission.author)
