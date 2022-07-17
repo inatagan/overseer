@@ -1,0 +1,19 @@
+[Unit]
+Description=Lapp Overseer Bot for PatchesEmporium
+After=multi-user.target
+
+StartLimitIntervalSec=500
+StartLimitBurst=5
+
+
+[Service]
+Restart=on-failure  
+RestartSec=5s  
+Type=idle  
+WorkingDirectory= /home/$USER/overseer/  
+ExecStart=/usr/bin/python /home/$USER/overseer/overseer.py  
+User=$USER  
+
+[Install]  
+WantedBy=multi-user.target
+
