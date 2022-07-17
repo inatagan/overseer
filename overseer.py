@@ -19,7 +19,7 @@ def main():
     subreddit = reddit.subreddit("Haligtree")
     for submission in subreddit.stream.submissions(skip_existing=True):
         user = submission.author
-        user_submissions = get_total_sub(reddit, submission.author)
+        user_submissions = get_total_submissions(reddit, submission.author)
         user_comments = get_total_comments(reddit, submission.author)
         account_age = get_age(user.created_utc)
         bot_reply = submission.reply(body=REPLY_TEMPLATE.format(user.name, submission.author_flair_text, user_submissions, user_comments, account_age, submission.url))
@@ -34,11 +34,11 @@ def get_total_comments(reddit, user):
     return total_comments
 
 
-def get_total_sub(reddit, user):
-    total_subs = 0
+def get_total_submissions(reddit, user):
+    total_submissions = 0
     for submission in reddit.redditor(user.name).submissions.top(limit=None):
-        total_subs += 1
-    return total_subs
+        total_submissions += 1
+    return total_submissions
 
 
 def get_age(user_created_utc):
