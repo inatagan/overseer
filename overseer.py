@@ -61,7 +61,7 @@ REPLY_TEMPLATE = """**Trader** | {}
 **Total Submissions** | {}+
 **Total Comments** | {}+
 **Account age** | {}
-**Report this trade** | [report](https://reddit.com/message/compose?to=/r/{}&subject=Trade%20Report&message=%23%23%23%20My%20info%0AMy%20reddit%20username%3A%0A%0AMy%20Account%20%5BPSN%20%7C%20GAMERTAG%20%7C%20STEAM%20ID%5D%3A%0A%0A%23%23%23%20Want%20to%20report%20the%20following%20user%0A%0AReddit%20username%3A%0A%0AAccount%20%5BPSN%20%7C%20GAMERTAG%20%7C%20STEAM%20ID%5D%3A%0A%0A%23%23%23%20What%20happened%3F%0A%5BAdd%20description%20here%5D%0A%0A%23%23%23%20Evidences%0A%5BAdd%20here%20any%20screenshots%20or%20videos%20of%20the%20occurrence%20that%20you%20have%2C%20PS%3A%20you%20must%20upload%20the%20screenshots%20or%20video%20to%20a%20hosting%20service%20and%20them%20copy%20and%20paste%20the%20link%20here.%5D%0A%0A%0A%5BDO%20NOT%20CHANGE%20THIS%20LINK%5D%0Apermalink%3A{})
+**Report this trade** | [ REPORT ](https://reddit.com/message/compose?to=/r/{}&subject=Trade%20Report&message=%23%23%23My%20info%0AMy%20reddit%20username%3A%0A%0AMy%20Account%20%5BPSN%20%7C%20GAMERTAG%20%7C%20STEAM%20ID%5D%3A%0A%0A%23%23%23Want%20to%20report%20the%20following%20user%0A%0AReddit%20username%3A%0A%0AAccount%20%5BPSN%20%7C%20GAMERTAG%20%7C%20STEAM%20ID%5D%3A%0A%0A%23%23%23What%20happened%3F%0A%5BAdd%20description%20here%5D%0A%0A%23%23%23Evidences%0A%5BAdd%20here%20any%20screenshots%20or%20videos%20of%20the%20occurrence%20that%20you%20have%2C%20PS%3A%20you%20must%20upload%20the%20screenshots%20or%20video%20to%20a%20hosting%20service%20and%20them%20copy%20and%20paste%20the%20link%20here.%5D%0A%0A%0A%5BDO%20NOT%20CHANGE%20THIS%20LINK%5D%0Apermalink%3A%20%5B{}%5D)
 """
 
 
