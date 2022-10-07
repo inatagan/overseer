@@ -1,8 +1,20 @@
+import logging
 from dotenv import load_dotenv
 import os
 import praw
 from datetime import datetime
+import time
+from prawcore.exceptions import PrawcoreException
 
+
+
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s [ %(levelname)s ] | [ %(name)s ]: %(message)s')
+log_file_handler = logging.FileHandler('rya_the_scout.log')
+log_file_handler.setFormatter(formatter)
+logger.addHandler(log_file_handler)
 
 
 def main():
@@ -18,14 +30,27 @@ def main():
 
     sub=os.environ.get('my_subreddit')
     subreddit = reddit.subreddit(sub)
-    for submission in subreddit.stream.submissions(skip_existing=True):
-        user = submission.author
-        user_submissions = get_total_submissions(reddit, submission.author)
-        user_comments = get_total_comments(reddit, submission.author)
-        account_age = get_age(user.created_utc)
-        bot_reply = submission.reply(body=REPLY_TEMPLATE.format(user.name, submission.author_flair_text, user_submissions, user_comments, account_age, sub, submission.url))
-        bot_reply.mod.distinguish(how="yes", sticky=True)
-        bot_reply.mod.lock()
+
+
+    running = True
+    while running:
+        try:
+            for submission in subreddit.stream.submissions(skip_existing=True):
+                user = submission.author
+                user_submissions = get_total_submissions(reddit, submission.author)
+                user_comments = get_total_comments(reddit, submission.author)
+                account_age = get_age(user.created_utc)
+                bot_reply = submission.reply(body=REPLY_TEMPLATE.format(user.name, submission.author_flair_text, user_submissions, user_comments, account_age, sub, submission.url))
+                bot_reply.mod.distinguish(how="yes", sticky=True)
+                bot_reply.mod.lock()
+        
+
+        except KeyboardInterrupt:
+            logger.info('Termination received. Goodbye!')
+            running = False
+        except PrawcoreException as err:
+            logger.exception('Oops I did it again.. ERROR= {}'.format(err))
+            time.sleep(10)
 
 
 def get_total_comments(reddit, user):

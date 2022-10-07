@@ -1,5 +1,5 @@
 [Unit]
-Description=Lapp Overseer Bot for PatchesEmporium
+Description=Rya Overseer Bot for PatchesEmporium
 After=multi-user.target
 
 StartLimitIntervalSec=500
@@ -13,6 +13,8 @@ Type=idle
 WorkingDirectory= /home/$USER/overseer/  
 ExecStart=/usr/bin/python /home/$USER/overseer/overseer.py  
 User=$USER  
+KillSignal=SIGINT  
+
 
 [Install]  
 WantedBy=multi-user.target
